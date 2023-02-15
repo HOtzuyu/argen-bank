@@ -34,7 +34,7 @@ The project is about a new start-up bank, Argent Bank, which is trying to break 
 ---
 
 Clone this repository
-[git@github.com:OpenClassrooms-Student-Center/Project-10-Bank-API.git]
+[https://github.com/OpenClassrooms-Student-Center/Project-10-Bank-API]
 and follow the README.md's instructions
 
 ## FRONT-END
