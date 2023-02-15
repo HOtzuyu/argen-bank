@@ -17,7 +17,11 @@
 ## Table of Contents
 
 1. [Presentation](#presentation)
-2. [Prerequisites](#prerequisites)
+2. [Back-end](#backEnd)
+3. [Front-end](#frontEnd)
+4. [Technologies](#technologies)
+5. [Installation](#installation)
+6. [Author](#author)
 
 ## Presentation
 
