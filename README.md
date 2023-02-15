@@ -75,6 +75,14 @@ $ npm install
 $ npm start
 ```
 
+You can generate jsdoc after cloning.
+
+>
+
+```
+npm run doc
+```
+
 Side information: Clone, install and run `the back-end` before start the project !
 
 # Author
