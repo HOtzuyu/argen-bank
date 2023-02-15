@@ -24,6 +24,7 @@ export default function SignIn() {
 
     if (!token) {
       setInvalid(true);
+      console.log(token);
       return;
     }
 
