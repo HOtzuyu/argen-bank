@@ -1,3 +1,6 @@
+/**
+ * call all fetchs
+ */
 class Api {
   tokenRequest = async (email, password) => {
     try {

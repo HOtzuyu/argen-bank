@@ -4,6 +4,10 @@ import { useNavigate } from "react-router";
 import { logIn, setUser } from "../../utils/redux/reducers";
 import Api from "../../utils/api/Api";
 
+/**
+ * Set SignIn page
+ * @returns {JSX.Element} SignIn component
+ */
 function SignIn() {
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -43,7 +47,7 @@ function SignIn() {
           const user = userRequest.body;
           dispatch(logIn(token));
           dispatch(setUser(user));
-          navigate("/user");
+          navigate("/profile");
         } else {
           setError(userRequest.message);
         }

@@ -4,7 +4,6 @@ import React from "react";
  * Error404 page
  * @returns {JSX.Element} Error404 component
  */
-
 function Error404() {
   return (
     <div>

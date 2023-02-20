@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: components/footer/Footer.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: components/footer/Footer.js</h1>
 
     
 
@@ -26,20 +26,19 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-/**
- * Application initialization with React DOM *
+            <pre class="prettyprint source linenums"><code>/**
+ * Footer section
+ * @returns Footer section for all pages
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
-</code></pre>
+function Footer() {
+    return (
+        &lt;footer className="footer">
+            &lt;p className="footer-text">Copyright 2020 Argent Bank&lt;/p>
+        &lt;/footer>
+    )
+}
+
+export default Footer</code></pre>
         </article>
     </section>
 

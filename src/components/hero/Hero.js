@@ -1,4 +1,8 @@
-export default function Hero() {
+/**
+ * Hero section
+ * @returns Hero section component
+ */
+function Hero() {
     return (
         <div className="hero">
             <section className="hero-content">
@@ -11,3 +15,5 @@ export default function Hero() {
         </div>
     )
 }
+
+export default Hero;

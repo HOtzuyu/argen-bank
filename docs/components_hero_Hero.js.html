@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: components/hero/Hero.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: components/hero/Hero.js</h1>
 
     
 
@@ -26,20 +26,25 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-/**
- * Application initialization with React DOM *
+            <pre class="prettyprint source linenums"><code>/**
+ * Hero section
+ * @returns Hero section component
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
-</code></pre>
+function Hero() {
+    return (
+        &lt;div className="hero">
+            &lt;section className="hero-content">
+                &lt;h2 className="sr-only">Promoted Content&lt;/h2>
+                &lt;p className="subtitle">No fees.&lt;/p>
+                &lt;p className="subtitle">No minimum deposit.&lt;/p>
+                &lt;p className="subtitle">High interest rates.&lt;/p>
+                &lt;p className="text">Open a savings account with Argent Bank today!&lt;/p>
+            &lt;/section>
+        &lt;/div>
+    )
+}
+
+export default Hero;</code></pre>
         </article>
     </section>
 

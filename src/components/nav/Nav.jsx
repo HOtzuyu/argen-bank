@@ -5,6 +5,10 @@ import { useSelector, useDispatch } from "react-redux";
 import { selectUserLogin, selectUser } from "../../utils/redux/selectors";
 import { logOut } from "../../utils/redux/reducers";
 
+/**
+ * Navigation _ adapt the name according to user
+ * @returns {JSX.Element} Navigation (Header for all pages) component
+ */
 function Nav() {
   const dispatch = useDispatch();
   const isUserLogIn = useSelector(selectUserLogin);
@@ -36,7 +40,7 @@ function Nav() {
           <div>
             <Link
               className="main-nav-item"
-              to="/signin"
+              to="/profile"
             >
               <i className="fa fa-user-circle"></i>
               <span> {user.firstName}</span>

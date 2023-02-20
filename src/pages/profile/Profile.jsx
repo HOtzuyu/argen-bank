@@ -7,7 +7,11 @@ import { selectUser, selectUserLogin } from "../../utils/redux/selectors";
 import UpdateForm from "../../components/updateForm/UpdateForm";
 import AccountCard from "../../components/accountCard/AccountCard";
 
-function User() {
+/**
+ * Set Profile page (user's account)
+ * @returns {JSX.Element} Profile component
+ */
+function Profile() {
   const isUserLogIn = useSelector(selectUserLogin);
   const user = useSelector(selectUser);
   const navigate = useNavigate();
@@ -34,4 +38,4 @@ function User() {
   ) : null;
 }
 
-export default User;
+export default Profile;

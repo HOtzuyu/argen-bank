@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: App.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: App.js</h1>
 
     
 
@@ -27,18 +27,42 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import './index.css';
+import Home from './pages/home/Home';
+import Profile from './pages/profile/Profile';
+import SignIn from './pages/sign-in/SignIn';
+import Footer from './components/footer/Footer';
+import Nav from './components/nav/Nav';
+import { Provider } from 'react-redux';
+import store from "./utils/redux/store";
+import Error404 from './pages/error/Error404';
 
 /**
- * Application initialization with React DOM *
+ * Main component of the application that manages the routing of the different pages
+ * @returns {JSX.Element} The router component
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
+function App() {
+    return (
+        &lt;React.StrictMode>
+            &lt;Provider store={store} >
+            &lt;Router>
+                &lt;Nav />
+                &lt;Routes>
+                    &lt;Route path='/' element={&lt;Home />} />
+                    &lt;Route path='/profile' element={&lt;Profile />} />
+                    &lt;Route path='/signin' element={&lt;SignIn />} />
+                    &lt;Route path='*' element={&lt;Error404 />} />
+                &lt;/Routes>
+                &lt;Footer />
+            &lt;/Router>
+            &lt;/Provider>
+        &lt;/React.StrictMode>
+    );
+}
+
+export default App;
 </code></pre>
         </article>
     </section>

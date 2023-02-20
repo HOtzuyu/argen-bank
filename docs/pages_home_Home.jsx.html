@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: pages/home/Home.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: pages/home/Home.jsx</h1>
 
     
 
@@ -26,19 +26,24 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import Hero from "../../components/hero/Hero";
+import Features from "../../components/features/Features";
 
 /**
- * Application initialization with React DOM *
+ * Home page _ first page
+ * @returns {JSX.Element} Home component
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
+function Home() {
+  return (
+    &lt;div>
+      &lt;Hero />
+      &lt;Features />
+    &lt;/div>
+  );
+}
+
+export default Home;
 </code></pre>
         </article>
     </section>

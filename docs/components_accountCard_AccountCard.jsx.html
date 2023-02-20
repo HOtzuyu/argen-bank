@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: components/accountCard/AccountCard.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: components/accountCard/AccountCard.jsx</h1>
 
     
 
@@ -26,19 +26,38 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+            <pre class="prettyprint source linenums"><code>import React from "react";
+import PropTypes from "prop-types";
 
 /**
- * Application initialization with React DOM *
+ * Account card _ data from props
+ * @param {String} title
+ * @param {String} amount
+ * @param {string} description
+ * @returns {JSX.Element} Account card amount section
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
+function AccountCard({ title, amount, description }) {
+  return (
+    &lt;section className="account">
+      &lt;div className="account-content-wrapper">
+        &lt;h3 className="account-title">{title}&lt;/h3>
+        &lt;p className="account-amount">{amount} &lt;/p>
+        &lt;p className="account-amount-description">{description}&lt;/p>
+      &lt;/div>
+      &lt;div className="account-content-wrapper cta">
+        &lt;button className="transaction-button">View transactions&lt;/button>
+      &lt;/div>
+    &lt;/section>
+  );
+}
+
+export default AccountCard;
+
+AccountCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};
 </code></pre>
         </article>
     </section>

@@ -5,10 +5,9 @@ import { updateUser } from "../../utils/redux/reducers";
 import Api from "../../utils/api/Api";
 
 /**
- * UpdateForm
+ * UpdateForm when change the name when we edit the name
  * @returns {JSX.Element} UpdateForm component
  */
-
 function UpdateForm() {
   const dispatch = useDispatch();
   const user = useSelector(selectUser);

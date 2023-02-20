@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: data/mockup.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: data/mockup.js</h1>
 
     
 
@@ -26,20 +26,29 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
-
-/**
- * Application initialization with React DOM *
+            <pre class="prettyprint source linenums"><code>/**
+ * Create profile's amount
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
-</code></pre>
+export const ACCOUNTS = [
+  {
+    id: "account1",
+    title: "Argent Bank Checking (x8349)",
+    amount: "$2,082.79",
+    description: "Available Balance",
+  },
+  {
+    id: "account2",
+    title: "Argent Bank Savings (x6712)",
+    amount: "$10,928.42",
+    description: "Available Balance",
+  },
+  {
+    id: "account3",
+    title: "Argent Bank Credit Card (x8349)",
+    amount: "$184.30",
+    description: "Current Balance",
+  },
+];</code></pre>
         </article>
     </section>
 

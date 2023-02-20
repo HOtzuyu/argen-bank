@@ -1,13 +1,15 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const userSlice = createSlice({
+  // Slice's name
   name: "user",
+  // bases state
   initialState: {
     isLogIn : false,
     token: false,
     user: false,
   },
-
+  // all actions
   reducers: {
 
     logIn: (state, action) => {
@@ -26,7 +28,7 @@ const userSlice = createSlice({
       state.user = action.payload;
       state.isLogIn = true;
     },
-
+    // handling app state changes
     updateUser: (state,action)=> {
       state.user.firstName = action.payload.firstName
       state.user.lastName = action.payload.lastName

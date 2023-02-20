@@ -1,5 +1,13 @@
 import React from "react";
+import PropTypes from "prop-types";
 
+/**
+ * Account card _ data from props
+ * @param {String} title
+ * @param {String} amount
+ * @param {string} description
+ * @returns {JSX.Element} Account card amount section
+ */
 function AccountCard({ title, amount, description }) {
   return (
     <section className="account">
@@ -16,3 +24,9 @@ function AccountCard({ title, amount, description }) {
 }
 
 export default AccountCard;
+
+AccountCard.propTypes = {
+  title: PropTypes.string.isRequired,
+  amount: PropTypes.string.isRequired,
+  description: PropTypes.string.isRequired,
+};

@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: pages/error/Error404.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: pages/error/Error404.jsx</h1>
 
     
 
@@ -26,19 +26,21 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+            <pre class="prettyprint source linenums"><code>import React from "react";
 
 /**
- * Application initialization with React DOM *
+ * Error404 page
+ * @returns {JSX.Element} Error404 component
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
+function Error404() {
+  return (
+    &lt;div>
+      &lt;h1>Error 404 page&lt;/h1>
+    &lt;/div>
+  );
+}
+
+export default Error404;
 </code></pre>
         </article>
     </section>

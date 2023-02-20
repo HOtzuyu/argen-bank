@@ -27,100 +27,61 @@
     <section>
         <article>
             <pre class="prettyprint source linenums"><code>import React from "react";
-import Logo from "../../assets/logo_argent-bank.png";
-import { Link, useNavigate } from "react-router-dom";
+import logo from "../../assets/logo_argent-bank.png";
+import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { signOut, fetchUserData } from "../../services/actions";
-import { selectUser } from "../../feature/selector";
+import { selectUserLogin, selectUser } from "../../utils/redux/selectors";
+import { logOut } from "../../utils/redux/reducers";
 
+/**
+ * Navigation _ adapt the name according to user
+ * @returns {JSX.Element} Navigation (Header for all pages) component
+ */
 function Nav() {
-  // Récupération des données de l'utilisateur via hook useSelector
-  const userData = useSelector(selectUser);
-  // Récupération du token dans le localStorage ou sessionStorage
-  const token =
-    localStorage.getItem("token") || sessionStorage.getItem("token");
-  // Récupération de l'état de "se souvenir de moi" dans le localStorage
-  const isRemembered = localStorage.getItem("isRemembered");
-
   const dispatch = useDispatch();
-  const navigate = useNavigate();
+  const isUserLogIn = useSelector(selectUserLogin);
+  const user = useSelector(selectUser);
 
-  /**
-   * clearStorage - Fonction de nettoyage du localStorage et sessionStorage et de la déconnexion de l'utilisateur
-   *
-   * @returns {void}
-   */
-  function clearStorage() {
-    localStorage.clear();
-    sessionStorage.clear();
-    return dispatch(signOut());
-  }
-
-  /**
-   * remember - Fonction de gestion de l'état "se souvenir de moi"
-   *
-   * @returns {void}
-   */
-  function remember() {
-    if (isRemembered) {
-      dispatch(fetchUserData(token));
-      navigate("/user");
-    } else {
-      navigate("/sign-in");
-    }
-  }
-
-  // Rendu conditionnel du header en fonction de la présence d'un token et de données de l'utilisateur
-  return token &amp;&amp; userData.data ? (
+  return (
     &lt;nav className="main-nav">
       &lt;Link
-        to="/"
         className="main-nav-logo"
+        to="/"
       >
         &lt;img
           className="main-nav-logo-image"
-          src={Logo}
+          src={logo}
           alt="Argent Bank Logo"
         />
         &lt;h1 className="sr-only">Argent Bank&lt;/h1>
       &lt;/Link>
       &lt;div>
-        &lt;Link
-          to="/login"
-          className="main-nav-item"
-        >
-          &lt;i className="fa fa-user-circle">&lt;/i>
-          {userData.data.firstName}
-        &lt;/Link>
-        &lt;Link
-          to="/"
-          onClick={clearStorage}
-          className="main-nav-item"
-        >
-          &lt;i className="fa fa-sign-out">&lt;/i>
-          Sign Out
-        &lt;/Link>
-      &lt;/div>
-    &lt;/nav>
-  ) : (
-    &lt;nav className="main-nav">
-      &lt;Link
-        to="/"
-        className="main-nav-logo"
-      >
-        &lt;img
-          className="main-nav-logo-image"
-          src={Logo}
-          alt="Argent Bank Logo"
-        />
-        &lt;h1 className="sr-only">Argent Bank&lt;/h1>
-      &lt;/Link>
-      &lt;div
-        onClick={remember}
-        className="main-nav-item"
-      >
-        &lt;i className="fa fa-user-circle">&lt;/i>
-        Sign In
+        {!isUserLogIn ? (
+          &lt;Link
+            className="main-nav-item"
+            to="/signin"
+          >
+            &lt;i className="fa fa-user-circle">&lt;/i>
+            &lt;span> Sign In&lt;/span>
+          &lt;/Link>
+        ) : (
+          &lt;div>
+            &lt;Link
+              className="main-nav-item"
+              to="/profile"
+            >
+              &lt;i className="fa fa-user-circle">&lt;/i>
+              &lt;span> {user.firstName}&lt;/span>
+            &lt;/Link>
+            &lt;Link
+              className="main-nav-item"
+              to="/"
+            >
+              &lt;i className="fa-solid fa-right-from-bracket">&lt;/i>
+              &lt;span onClick={() => dispatch(logOut())}> Sign Out&lt;/span>
+            &lt;/Link>
+          &lt;/div>
+        )}
       &lt;/div>
     &lt;/nav>
   );
@@ -137,13 +98,13 @@ export default Nav;
 </div>
 
 <nav>
-    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#root">root</a></li></ul>
+    <h2><a href="index.html">Home</a></h2><h3>Classes</h3><ul><li><a href="Api.html">Api</a></li></ul><h3>Global</h3><ul><li><a href="global.html#ACCOUNTS">ACCOUNTS</a></li><li><a href="global.html#AccountCard">AccountCard</a></li><li><a href="global.html#App">App</a></li><li><a href="global.html#Error404">Error404</a></li><li><a href="global.html#Features">Features</a></li><li><a href="global.html#Footer">Footer</a></li><li><a href="global.html#Hero">Hero</a></li><li><a href="global.html#Home">Home</a></li><li><a href="global.html#Nav">Nav</a></li><li><a href="global.html#Profile">Profile</a></li><li><a href="global.html#SignIn">SignIn</a></li><li><a href="global.html#UpdateForm">UpdateForm</a></li><li><a href="global.html#root">root</a></li></ul>
 </nav>
 
 <br class="clear">
 
 <footer>
-    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Wed Feb 15 2023 17:50:24 GMT+0100 (GMT+01:00)
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 4.0.0</a> on Mon Feb 20 2023 11:44:16 GMT+0100 (heure normale d’Europe centrale)
 </footer>
 
 <script> prettyPrint(); </script>

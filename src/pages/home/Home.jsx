@@ -1,12 +1,18 @@
-import React from 'react';
-import Hero from '../../components/hero/Hero';
-import Features from '../../components/features/Features';
+import React from "react";
+import Hero from "../../components/hero/Hero";
+import Features from "../../components/features/Features";
 
-export default function Home() {
-    return (
-        <div>
-            <Hero />
-            <Features />
-        </div>
-    );
+/**
+ * Home page _ first page
+ * @returns {JSX.Element} Home component
+ */
+function Home() {
+  return (
+    <div>
+      <Hero />
+      <Features />
+    </div>
+  );
 }
+
+export default Home;

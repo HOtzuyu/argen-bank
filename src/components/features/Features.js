@@ -2,7 +2,11 @@ import chat from '../../assets/icon-chat.png';
 import money from '../../assets/icon-money.png';
 import security from '../../assets/icon-security.png';
 
-export default function Features() {
+/**
+ * Features section
+ * @returns features section for Home page
+ */
+function Features() {
     return (
         <section className="features">
             <h2 className="sr-only">Features</h2>
@@ -40,3 +44,5 @@ export default function Features() {
       </section>
     )
 }
+
+export default Features

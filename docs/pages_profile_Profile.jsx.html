@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: index.js</title>
+    <title>JSDoc: Source: pages/profile/Profile.jsx</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: index.js</h1>
+    <h1 class="page-title">Source: pages/profile/Profile.jsx</h1>
 
     
 
@@ -26,19 +26,47 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>import React from 'react';
-import ReactDOM from 'react-dom/client';
-import App from './App';
+            <pre class="prettyprint source linenums"><code>import { ACCOUNTS } from "../../data/mockup";
+import React from "react";
+import { useEffect } from "react";
+import { useNavigate } from "react-router";
+import { useSelector } from "react-redux";
+import { selectUser, selectUserLogin } from "../../utils/redux/selectors";
+import UpdateForm from "../../components/updateForm/UpdateForm";
+import AccountCard from "../../components/accountCard/AccountCard";
 
 /**
- * Application initialization with React DOM *
+ * Set Profile page (user's account)
+ * @returns {JSX.Element} Profile component
  */
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-    &lt;React.StrictMode>
-        &lt;App />
-    &lt;/React.StrictMode>,
-);
+function Profile() {
+  const isUserLogIn = useSelector(selectUserLogin);
+  const user = useSelector(selectUser);
+  const navigate = useNavigate();
+
+  useEffect(() => {
+    if (!isUserLogIn || !user) {
+      navigate("/");
+    }
+  }, [isUserLogIn, user, navigate]);
+
+  return isUserLogIn &amp;&amp; user ? (
+    &lt;main className="main bg-dark">
+      &lt;UpdateForm user={user} />
+      &lt;h2 className="sr-only">Accounts&lt;/h2>
+      {ACCOUNTS.map((account, index) => (
+        &lt;AccountCard
+          key={`account${index}`}
+          title={account.title}
+          amount={account.amount}
+          description={account.description}
+        />
+      ))}
+    &lt;/main>
+  ) : null;
+}
+
+export default Profile;
 </code></pre>
         </article>
     </section>

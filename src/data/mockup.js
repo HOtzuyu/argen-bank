@@ -1,3 +1,6 @@
+/**
+ * Create profile's amount
+ */
 export const ACCOUNTS = [
   {
     id: "account1",
