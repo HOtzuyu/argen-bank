@@ -8,7 +8,8 @@ import SignIn from './pages/sign-in/SignIn';
 import Footer from './components/footer/Footer';
 import Nav from './components/nav/Nav';
 import { Provider } from 'react-redux';
-import store from "./app/store";
+import store from "./utils/redux/store";
+import Error404 from './pages/error/Error404';
 
 function App() {
     return (
@@ -19,7 +20,8 @@ function App() {
                 <Routes>
                     <Route path='/' element={<Home />} />
                     <Route path='/user' element={<User />} />
-                    <Route path='/sign-in' element={<SignIn />} />
+                    <Route path='/signin' element={<SignIn />} />
+                    <Route path='*' element={<Error404 />} />
                 </Routes>
                 <Footer />
             </Router>

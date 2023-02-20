@@ -1,80 +1,101 @@
-import React from "react";
 import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import {
-  fetchUserToken,
-  fetchUserData,
-  setRemember,
-} from "../../services/actions";
 import { useDispatch } from "react-redux";
+import { useNavigate } from "react-router";
+import { logIn, setUser } from "../../utils/redux/reducers";
+import Api from "../../utils/api/Api";
 
-export default function SignIn() {
-  const dispatch = useDispatch();
+function SignIn() {
   const navigate = useNavigate();
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
-  const [invalid, setInvalid] = useState(false);
+  const dispatch = useDispatch();
 
-  async function login(e) {
+  const [email, setMail] = useState("");
+  const [password, setPassword] = useState("");
+  const [checked, setChecked] = useState(false);
+  const [Error, setError] = useState("");
+
+  const handleChangeMail = (e) => {
+    const name = e.target.value;
+    setMail(name);
+  };
+
+  const handleChangePassword = (e) => {
+    const password = e.target.value;
+    setPassword(password);
+  };
+
+  const handleChangeCheckbox = () => {
+    setChecked(!checked);
+  };
+
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const remember = document.getElementById("remember-me").checked;
-    const userLogin = { email, password };
-    const token = dispatch(fetchUserToken(userLogin));
+    if (email.length !== 0 && password.length !== 0) {
+      setError("");
 
-    if (!token) {
-      setInvalid(true);
-      return;
+      const tokenRequest = await new Api().tokenRequest(email, password);
+
+      if (tokenRequest.status === 200) {
+        const token = tokenRequest.body.token;
+        const userRequest = await new Api().userRequest(token);
+
+        if (userRequest.status === 200) {
+          const user = userRequest.body;
+          dispatch(logIn(token));
+          dispatch(setUser(user));
+          navigate("/user");
+        } else {
+          setError(userRequest.message);
+        }
+      } else {
+        setError(tokenRequest.message);
+      }
     }
-
-    setInvalid(false);
-    dispatch(fetchUserData(token));
-
-    remember
-      ? setRemember(token, remember)
-      : sessionStorage.setItem("token", token);
-
-    navigate("/user");
-  }
+  };
 
   return (
     <main className="main bg-dark">
       <section className="sign-in-content">
         <i className="fa fa-user-circle sign-in-icon"></i>
         <h1>Sign In</h1>
-        <form onSubmit={login}>
+        <form>
           <div className="input-wrapper">
-            <label htmlFor="username">Username</label>
+            <label>Username</label>
             <input
               type="email"
-              name="email"
-              placeholder="email@email.com"
-              onChange={(e) => setEmail(e.target.value)}
-              required
+              name="name"
+              onChange={(e) => handleChangeMail(e)}
             />
           </div>
           <div className="input-wrapper">
-            <label htmlFor="password">Password</label>
+            <label>Password</label>
             <input
               type="password"
-              name="password"
-              onChange={(e) => setPassword(e.target.value)}
-              required
+              name="name"
+              onChange={(e) => handleChangePassword(e)}
             />
           </div>
           <div className="input-remember">
             <input
               type="checkbox"
-              id="remember-me"
+              checked={checked}
+              onChange={() => handleChangeCheckbox()}
             />
-            <label htmlFor="remember-me">Remember me</label>
+            <label>Remember me</label>
           </div>
-          <button className="sign-in-button">Sign In</button>
+          <input
+            className="sign-in-button"
+            type="submit"
+            value="Sign In"
+            onClick={(e) => {
+              handleSubmit(e);
+            }}
+          />
+          <p>{Error}</p>
         </form>
-        {invalid ? (
-          <div className="messageConnexionError">invalid credentials</div>
-        ) : null}
       </section>
     </main>
   );
 }
+
+export default SignIn;
